@@ -17,7 +17,7 @@ domReady(function () {
         document.getElementById('qr-result').value = decodeText;
 
         // Alert with the QR code text
-        alert("Your QR code is: " + decodeText);
+        alert("WTF QR code is: " + decodeText);
     }
 
     let htmlscanner = new Html5QrcodeScanner(
