@@ -22,27 +22,7 @@
     </div>
     <script src="https://unpkg.com/html5-qrcode"></script>
     <script src="script.js"></script>
-	<script>function onScanSuccess(decodedText, decodedResult) {
-    // Set QR code data to the hidden form input
-    document.getElementById('qr_data').value = decodedText;
-    // Start the next button visible and enable it
-    document.getElementById('next-button').style.display = 'block';
-}
-
-function submitQRCode() {
-    // Submit the form with QR code data
-    document.getElementById('qr-data-form').submit();
-}
-
-// Initialize the QR code reader
-const html5QrcodeScanner = new Html5QrcodeScanner(
-    "my-qr-reader",
-    { fps: 10, qrbox: 250 },
-    true
-);
-
-html5QrcodeScanner.render(onScanSuccess);
-</script>
+	
 </body>
 
 </html>
