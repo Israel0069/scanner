@@ -1,28 +1,55 @@
+<!-- Index.html file -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>QR Code Scanner / Reader</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          href="style.css">
+    <title>QR Code Scanner / Reader
+    </title>
 </head>
 
 <body>
     <div class="container">
         <h1>Scan QR Codes</h1>
         <div class="section">
-            <div id="my-qr-reader"></div>
+            <div id="my-qr-reader">
+            </div>
         </div>
-        <form id="qr-data-form" method="post" action="next.php" style="display:none;">
+		<form id="qr-data-form" method="post" action="http://192.168.100.70:8000/next.php" style="display:none;">
             <input type="hidden" name="qr_data" id="qr_data">
         </form>
-        <br>
-        <a href="http://192.168.100.70:8000/next.php" id="next-button" onclick="submitQRCode()">Next</a>
+		<br>
+		<button id="next-button" onclick="submitQRCode()">Next</button>
     </div>
-    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script
+        src="https://unpkg.com/html5-qrcode">
+    </script>
     <script src="script.js"></script>
-	
+		<script>function onScanSuccess(decodedText, decodedResult) {
+    // Set QR code data to the hidden form input
+    document.getElementById('qr_data').value = decodedText;
+    // Start the next button visible and enable it
+    document.getElementById('next-button').style.display = 'block';
+}
+
+function submitQRCode() {
+    // Submit the form with QR code data
+    document.getElementById('qr-data-form').submit();
+}
+
+// Initialize the QR code reader
+const html5QrcodeScanner = new Html5QrcodeScanner(
+    "my-qr-reader",
+    { fps: 10, qrbox: 250 },
+    true
+);
+
+html5QrcodeScanner.render(onScanSuccess);
+</script>
 </body>
 
 </html>
