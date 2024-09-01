@@ -11,15 +11,14 @@ function domReady(fn) {
 
 domReady(function () {
 
-    // If QR code is successfully scanned
-    function onScanSuccess(decodedText, decodedResult) {
-        // Display QR code data using alert
-        alert("QR Code Data: " + decodedText + "\nResult: " + decodedResult);
+    // If found you qr code
+    function onScanSuccess(decodeText, decodeResult) {
+        alert("You Qr is : " + decodeText, decodeResult);
     }
 
-    let htmlScanner = new Html5QrcodeScanner(
+    let htmlscanner = new Html5QrcodeScanner(
         "my-qr-reader",
-        { fps: 10, qrbox: 250 } // Corrected "qrbos" to "qrbox"
+        { fps: 10, qrbos: 250 }
     );
-    htmlScanner.render(onScanSuccess);
+    htmlscanner.render(onScanSuccess);
 });
